@@ -30,9 +30,7 @@ instance_group [
     # The number of instances is 1
     count: 1
     # Use GPU, CPU inference option is:KIND_CPU
-    kind: KIND_GPU
-    # The instance is deployed on the 0th GPU card
-    gpus: [0]
+    kind: KIND_CPU
   }
 ]
 
@@ -41,7 +39,7 @@ optimization {
     # GPU推理配置， 配合KIND_GPU使用
     gpu_execution_accelerator : [
       {
-        name : "paddle"
+        name : "onnxruntime"
         # 设置推理并行计算线程数为4
         parameters { key: "cpu_threads" value: "4" }
         # 开启mkldnn加速，设置为0关闭mkldnn
